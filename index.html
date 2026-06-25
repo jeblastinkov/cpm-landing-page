@@ -64,18 +64,26 @@ section{padding:6rem 0;}
 .hero{position:relative;min-height:88vh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;
   background:linear-gradient(180deg,#cfe0e6 0%,#F3D3A2 30%,#EDB271 55%,#E09752 78%,#cf8048 100%);}
 .hero .sky{position:absolute;inset:0;background:
-  radial-gradient(circle at 50% 60%, rgba(255,247,230,0.95) 0%, rgba(255,234,200,0.55) 12%, rgba(255,220,170,0) 38%),
+  radial-gradient(circle at 50% 58%, rgba(255,247,230,0.72) 0%, rgba(255,234,200,0.38) 14%, rgba(255,220,170,0) 40%),
   linear-gradient(180deg,#bcd2da 0%,#e7c79c 34%,#e9b277 55%,#dd9a55 80%,#cf8044 100%);}
 .hero .rays{position:absolute;top:46%;left:50%;width:140vw;height:140vw;transform:translate(-50%,-50%);
   background:conic-gradient(from 0deg, rgba(255,250,235,0.0) 0deg, rgba(255,250,235,0.18) 8deg, rgba(255,250,235,0) 16deg, rgba(255,250,235,0.16) 24deg, rgba(255,250,235,0) 32deg, rgba(255,250,235,0.18) 44deg, rgba(255,250,235,0) 54deg, rgba(255,250,235,0.14) 70deg, rgba(255,250,235,0) 86deg, rgba(255,250,235,0.16) 110deg, rgba(255,250,235,0) 130deg, rgba(255,250,235,0.16) 160deg, rgba(255,250,235,0) 185deg, rgba(255,250,235,0.16) 220deg, rgba(255,250,235,0) 250deg, rgba(255,250,235,0.16) 290deg, rgba(255,250,235,0) 320deg, rgba(255,250,235,0.16) 350deg, rgba(255,250,235,0) 360deg);
-  opacity:0.6;pointer-events:none;}
+  opacity:0.38;pointer-events:none;}
 .hero .mtn{position:absolute;left:0;right:0;bottom:0;width:100%;display:block;}
 .hero .mist{position:absolute;left:0;right:0;bottom:0;height:42%;background:linear-gradient(180deg,rgba(245,225,195,0) 0%,rgba(244,224,193,0.55) 55%,rgba(238,214,180,0.85) 100%);pointer-events:none;}
+.hero::after{content:'';position:absolute;inset:0;z-index:2;pointer-events:none;
+  background:radial-gradient(ellipse 90% 70% at 50% 42%, rgba(42,24,10,0.14) 0%, rgba(55,32,14,0.06) 45%, rgba(0,0,0,0) 72%);}
 .hero .content{position:relative;z-index:3;padding:2rem;max-width:980px;}
-.hero h1{color:#fffaf2;font-size:clamp(2.1rem,4.6vw,3.6rem);font-weight:300;text-shadow:0 2px 24px rgba(120,70,30,0.35);line-height:1.22;}
-.hero .lead{color:#fff7ec;font-size:clamp(1.05rem,1.7vw,1.3rem);font-weight:300;margin:1.6rem auto 0;max-width:62ch;text-shadow:0 1px 14px rgba(120,70,30,0.35);}
+.hero h1{color:#fffdf8;font-size:clamp(2.1rem,4.6vw,3.6rem);font-weight:300;line-height:1.22;
+  text-shadow:0 1px 8px rgba(80,50,25,0.28),0 2px 20px rgba(80,50,25,0.18);}
+.hero .lead{color:#fffaf3;font-size:clamp(1.05rem,1.7vw,1.3rem);font-weight:300;margin:1.6rem auto 0;max-width:62ch;
+  text-shadow:0 1px 6px rgba(80,50,25,0.22),0 2px 14px rgba(80,50,25,0.14);}
 .hero-cta{display:flex;flex-wrap:wrap;gap:0.9rem;justify-content:center;margin-top:2.4rem;}
-.hero-micro{margin-top:1.5rem;color:#fff7ec;font-size:0.9rem;font-weight:300;opacity:0.95;}
+.hero .btn-outline-light{border:1px solid rgba(255,255,255,0.78);background:rgba(255,255,255,0.08);
+  text-shadow:none;}
+.hero .btn-outline-light:hover{background:#fff;color:var(--coral);text-shadow:none;}
+.hero-micro{margin-top:1.5rem;color:#fff8ee;font-size:0.9rem;font-weight:300;
+  text-shadow:0 1px 6px rgba(80,50,25,0.2);}
 
 /* ===== COLOR BLOCK SECTIONS ===== */
 .block-terra{background:var(--terracotta);color:var(--on-dark);}
@@ -231,7 +239,7 @@ footer{background:var(--taupe);color:#F2EAE0;padding:4.5rem 0 2.5rem;}
   </svg>
   <div class="mist"></div>
   <div class="content">
-    <h1>Necítite sa vo forme?<br>Spoločne hľadáme príčiny, nie len príznaky.</h1>
+    <h1>Cítite, že niečo nie je v poriadku?<br>Spoločne hľadáme príčiny, nie len príznaky.</h1>
     <p class="lead">Únava či pokles výkonu nevznikajú tam, kde ich cítite. Pozeráme sa na telo ako na celok — s tímom lekárov, ktorí vám výsledky vysvetlia zrozumiteľne, vašou rečou.</p>
     <div class="hero-cta">
       <a href="#rezervacia" class="btn btn-coral">Rezervovať bezplatný termín</a>
