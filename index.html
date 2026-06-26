@@ -2,19 +2,20 @@
 <html lang="sk">
 <head>
 <meta charset="UTF-8">
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-T7KP6D9JG9"></script>
-<script>
+<!-- Google Analytics (loaded only after consent) -->
+<script type="text/plain" data-category="analytics" data-service="Google Analytics" async src="https://www.googletagmanager.com/gtag/js?id=G-T7KP6D9JG9"></script>
+<script type="text/plain" data-category="analytics" data-service="Google Analytics">
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'G-T7KP6D9JG9');
+  gtag('config', 'G-T7KP6D9JG9', { anonymize_ip: true });
 </script>
-<!-- Vercel Web Analytics -->
-<script>
+<!-- Vercel Web Analytics (loaded only after consent) -->
+<script type="text/plain" data-category="analytics" data-service="Vercel Analytics">
   window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
 </script>
-<script defer src="/_vercel/insights/script.js"></script>
+<script type="text/plain" data-category="analytics" data-service="Vercel Analytics" defer src="/_vercel/insights/script.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@3.1.0/dist/cookieconsent.css">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CPM — Spoločne hľadáme príčiny, nie len príznaky</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -39,6 +40,25 @@
   --radius:6px;
   --ease:cubic-bezier(0.22,1,0.36,1);
   --t:0.4s var(--ease);
+
+  /* Cookie consent — match CPM palette */
+  --cc-bg:#FBF6EC;
+  --cc-text:#2E2A24;
+  --cc-btn-primary-bg:#E0623C;
+  --cc-btn-primary-color:#fff;
+  --cc-btn-primary-hover-bg:#C8502E;
+  --cc-btn-primary-hover-color:#fff;
+  --cc-btn-secondary-bg:#EFE5D5;
+  --cc-btn-secondary-color:#2E2A24;
+  --cc-btn-secondary-hover-bg:#E8D9C4;
+  --cc-btn-secondary-hover-color:#2E2A24;
+  --cc-separator-border-color:#DCCFB9;
+  --cc-cookie-category-block-bg:#F4ECDE;
+  --cc-cookie-category-block-border:#DCCFB9;
+  --cc-toggle-on-bg:#E0623C;
+  --cc-link-color:#C8502E;
+  --cc-overlay-bg:rgba(46,42,36,0.45);
+  --cc-font-family:'Jost',sans-serif;
 }
 *{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
@@ -203,6 +223,8 @@ footer{background:var(--taupe);color:#F2EAE0;padding:4.5rem 0 2.5rem;}
 .foot-social svg{width:17px;height:17px;color:#F2EAE0;}
 .foot-social a:hover{background:rgba(255,255,255,0.12);}
 .foot-bottom{border-top:1px solid rgba(255,255,255,0.18);margin-top:3rem;padding-top:1.6rem;font-size:0.82rem;color:#E3D8CA;opacity:0.85;text-align:center;}
+.foot-cookie-btn{background:none;border:none;padding:0;font-family:'Jost',sans-serif;font-size:0.82rem;color:#E3D8CA;cursor:pointer;text-decoration:underline;text-underline-offset:2px;}
+.foot-cookie-btn:hover{color:#fff;}
 
 /* ===== STICKY MOBILE CTA ===== */
 .mobile-cta{display:none;position:fixed;bottom:0;left:0;right:0;z-index:300;background:var(--cream);border-top:1px solid var(--line);padding:0.65rem 0.9rem;gap:0.6rem;box-shadow:0 -6px 20px -10px rgba(60,40,20,0.3);}
@@ -480,7 +502,7 @@ footer{background:var(--taupe);color:#F2EAE0;padding:4.5rem 0 2.5rem;}
         <a href="https://www.linkedin.com/company/centrum-personalizovanej-medicíny/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
       </div>
     </div>
-    <div class="foot-bottom">2026 © CPM — Centrum personalizovanej medicíny</div>
+    <div class="foot-bottom">2026 © CPM — Centrum personalizovanej medicíny · <button type="button" class="foot-cookie-btn" data-cc="show-preferencesModal">Nastavenia cookies</button></div>
   </div>
 </footer>
 
@@ -517,5 +539,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 </script>
+<script src="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@3.1.0/dist/cookieconsent.umd.js"></script>
+<script src="cookieconsent-config.js"></script>
 </body>
 </html>
