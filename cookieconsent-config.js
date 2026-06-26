@@ -1,14 +1,15 @@
 CookieConsent.run({
   mode: 'opt-in',
+  disablePageInteraction: false,
   cookie: {
     name: 'cpm_cookie_consent',
     expiresAfterDays: 182
   },
   guiOptions: {
     consentModal: {
-      layout: 'box',
-      position: 'bottom center',
-      equalWeightButtons: true,
+      layout: 'bar',
+      position: 'bottom',
+      equalWeightButtons: false,
       flipButtons: false
     },
     preferencesModal: {
@@ -29,14 +30,6 @@ CookieConsent.run({
           { name: /^_ga/ },
           { name: '_gid' }
         ]
-      },
-      services: {
-        ga: {
-          label: 'Google Analytics'
-        },
-        vercel: {
-          label: 'Vercel Analytics'
-        }
       }
     }
   },
@@ -45,9 +38,9 @@ CookieConsent.run({
     translations: {
       sk: {
         consentModal: {
-          title: 'Používame cookies',
-          description: 'Táto stránka používa nevyhnutné cookies na správne fungovanie a analytické cookies na pochopenie návštevnosti. Analytické cookies sa aktivujú len s vaším súhlasom.',
-          acceptAllBtn: 'Prijať všetko',
+          title: 'Cookies',
+          description: 'Používame cookies na zaistenie správneho chodu webu a pre skvalitnenie našich služieb.',
+          acceptAllBtn: 'Súhlasím',
           acceptNecessaryBtn: 'Len nevyhnutné',
           showPreferencesBtn: 'Nastavenia'
         },
@@ -70,7 +63,7 @@ CookieConsent.run({
             },
             {
               title: 'Analytické cookies',
-              description: 'Pomáhajú nám pochopiť, ako návštevníci používajú stránku (Google Analytics, Vercel Analytics). Údaje sú anonymizované.',
+              description: 'Pomáhajú nám pochopiť, ako návštevníci používajú stránku, aby sme ju mohli neustále vylepšovať. Všetky údaje sú anonymizované.',
               linkedCategory: 'analytics',
               cookieTable: {
                 headers: {
@@ -82,12 +75,12 @@ CookieConsent.run({
                   {
                     name: '_ga',
                     domain: 'google.com',
-                    desc: 'Rozlišuje používateľov (Google Analytics)'
+                    desc: 'Rozlišuje používateľov na účely štatistík.'
                   },
                   {
                     name: '_gid',
                     domain: 'google.com',
-                    desc: 'Rozlišuje používateľov (Google Analytics)'
+                    desc: 'Rozlišuje používateľov na účely štatistík.'
                   }
                 ]
               }

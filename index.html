@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <!-- Google Analytics (loaded only after consent) -->
-<script type="text/plain" data-category="analytics" data-service="Google Analytics" async src="https://www.googletagmanager.com/gtag/js?id=G-T7KP6D9JG9"></script>
+<script type="text/plain" data-category="analytics" async src="https://www.googletagmanager.com/gtag/js?id=G-T7KP6D9JG9"></script>
 <script type="text/plain" data-category="analytics" data-service="Google Analytics">
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -14,7 +14,7 @@
 <script type="text/plain" data-category="analytics" data-service="Vercel Analytics">
   window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
 </script>
-<script type="text/plain" data-category="analytics" data-service="Vercel Analytics" defer src="/_vercel/insights/script.js"></script>
+<script type="text/plain" data-category="analytics" defer src="/_vercel/insights/script.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@3.1.0/dist/cookieconsent.css">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CPM — Spoločne hľadáme príčiny, nie len príznaky</title>
@@ -57,9 +57,56 @@
   --cc-cookie-category-block-border:#DCCFB9;
   --cc-toggle-on-bg:#E0623C;
   --cc-link-color:#C8502E;
-  --cc-overlay-bg:rgba(46,42,36,0.45);
+  --cc-overlay-bg:rgba(46,42,36,0.25);
   --cc-font-family:'Jost',sans-serif;
 }
+#cc-main{font-size:0.85rem;}
+#cc-main .cm--bar{
+  max-width:100%;
+  border-top:1px solid var(--line);
+  border-radius:0;
+  box-shadow:0 -4px 20px rgba(46,42,36,0.06);
+  background:rgba(251,246,236,0.97);
+  backdrop-filter:blur(8px);
+}
+#cc-main .cm__body{
+  padding:0.4rem 1.25rem;
+  max-width:980px;
+  margin:0 auto;
+  display:flex;
+  flex-direction:row;
+  align-items:center;
+  justify-content:space-between;
+  gap:1.5rem;
+}
+#cc-main .cm__texts{gap:0; flex:1;}
+#cc-main .cm__title{display:none;}
+#cc-main .cm__desc{font-size:0.7rem;line-height:1.2;color:var(--ink-soft);max-width:100%; margin:0;}
+#cc-main .cm__btns{gap:0.3rem; display:flex; flex-direction:row; width:auto;}
+#cc-main .cm__btn{
+  min-height:auto;
+  padding:0.25rem 0.6rem;
+  font-size:0.65rem;
+  font-weight:400;
+  letter-spacing:0.04em;
+  border-radius:3px;
+}
+#cc-main .cm__btn--secondary{
+  background:transparent;
+  border:1px solid var(--line);
+  color:var(--ink-soft);
+}
+#cc-main .cm__btn--secondary:hover{background:var(--cream);}
+
+/* Preferences modal (smaller) */
+#cc-main .pm{max-width:600px;border-radius:var(--radius);}
+#cc-main .pm__body,#cc-main .pm__footer{padding:0.85rem 1.1rem;}
+#cc-main .pm__title{font-size:0.9rem;font-weight:500;}
+#cc-main .pm__section-title{font-size:0.8rem;}
+#cc-main .pm__section-desc,#cc-main .section__desc{font-size:0.75rem;color:var(--ink-soft);line-height:1.4;}
+#cc-main .pm__badge{font-size:0.6rem;padding:0.15rem 0.35rem;}
+#cc-main .pm__btn{min-height:auto;padding:0.4rem 0.8rem;font-size:0.7rem;border-radius:4px;}
+
 *{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
 body{font-family:'Jost',sans-serif;font-weight:300;color:var(--ink);background:var(--paper);line-height:1.65;-webkit-font-smoothing:antialiased;letter-spacing:0.01em;overflow-x:hidden;}
@@ -244,6 +291,15 @@ footer{background:var(--taupe);color:#F2EAE0;padding:4.5rem 0 2.5rem;}
   body{padding-bottom:72px;}
   .foot-grid{grid-template-columns:1fr;}
   .hero{min-height:80vh;}
+  #cc-main .cm--bar{bottom:72px;}
+  #cc-main .cm__body{
+    padding:0.4rem 0.8rem;
+    flex-direction:column;
+    align-items:flex-start;
+    gap:0.4rem;
+  }
+  #cc-main .cm__btns{width:100%; flex-wrap:wrap;}
+  #cc-main .pm{margin:1rem;}
 }
 </style>
 </head>
