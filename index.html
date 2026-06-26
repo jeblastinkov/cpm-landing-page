@@ -78,6 +78,9 @@ section{padding:6rem 0;}
   text-shadow:0 1px 8px rgba(80,50,25,0.28),0 2px 20px rgba(80,50,25,0.18);}
 .hero .lead{color:#fffaf3;font-size:clamp(1.05rem,1.7vw,1.3rem);font-weight:300;margin:1.6rem auto 0;max-width:62ch;
   text-shadow:0 1px 6px rgba(80,50,25,0.22),0 2px 14px rgba(80,50,25,0.14);}
+.hero-carousel{display:grid;}
+.hero-slide{grid-area:1 / 1;opacity:0;transition:opacity 0.8s ease-in-out;pointer-events:none;}
+.hero-slide.active{opacity:1;pointer-events:auto;}
 .hero-cta{display:flex;flex-wrap:wrap;gap:0.9rem;justify-content:center;margin-top:2.4rem;}
 .hero .btn-outline-light{border:1px solid rgba(255,255,255,0.78);background:rgba(255,255,255,0.08);
   text-shadow:none;}
@@ -239,8 +242,20 @@ footer{background:var(--taupe);color:#F2EAE0;padding:4.5rem 0 2.5rem;}
   </svg>
   <div class="mist"></div>
   <div class="content">
-    <h1>Cítite, že niečo nie je v poriadku?<br>Spoločne hľadáme príčiny, nie len príznaky.</h1>
-    <p class="lead">Únava či pokles výkonu nevznikajú tam, kde ich cítite. Pozeráme sa na telo ako na celok — s tímom lekárov, ktorí vám výsledky vysvetlia zrozumiteľne, vašou rečou.</p>
+    <div class="hero-carousel" id="heroCarousel">
+      <div class="hero-slide active">
+        <h1>Cítite, že niečo nie je v poriadku?<br>Spoločne hľadáme príčiny, nie len príznaky.</h1>
+        <p class="lead">Únava či pokles výkonu nevznikajú tam, kde ich cítite. Pozeráme sa na telo ako na celok — s tímom lekárov, ktorí vám výsledky vysvetlia vašou rečou.</p>
+      </div>
+      <div class="hero-slide">
+        <h1>Na Vašej pozícii sa nedá fungovať na 80 %.</h1>
+        <p class="lead">Vráťte si výkon, sústredenie a energiu — na základe vašich dát, nie univerzálnych protokolov.</p>
+      </div>
+      <div class="hero-slide">
+        <h1>Začnite bezplatným posúdením vašich lekárskych správ.</h1>
+        <p class="lead">Odborne ich zhodnotíme a vysvetlíme, čo z nich naozaj vyplýva. Zadarmo a nezáväzne.</p>
+      </div>
+    </div>
     <div class="hero-cta">
       <a href="#rezervacia" class="btn btn-coral">Rezervovať bezplatný termín</a>
       <a href="tel:+421902938810" class="btn btn-outline-light">Zavolať: +421 902 938 810</a>
@@ -468,6 +483,7 @@ footer{background:var(--taupe);color:#F2EAE0;padding:4.5rem 0 2.5rem;}
 </div>
 
 <script>
+// FAQ Accordion
 document.querySelectorAll('.faq-q').forEach(function(q){
   q.addEventListener('click',function(){
     var item=q.parentElement, a=item.querySelector('.faq-a');
@@ -475,6 +491,20 @@ document.querySelectorAll('.faq-q').forEach(function(q){
     document.querySelectorAll('.faq-item.open').forEach(function(o){o.classList.remove('open');o.querySelector('.faq-a').style.maxHeight=null;});
     if(!isOpen){item.classList.add('open');a.style.maxHeight=a.scrollHeight+'px';}
   });
+});
+
+// Hero Carousel
+document.addEventListener('DOMContentLoaded', function() {
+  const slides = document.querySelectorAll('.hero-slide');
+  let currentSlide = 0;
+  
+  if (slides.length > 0) {
+    setInterval(() => {
+      slides[currentSlide].classList.remove('active');
+      currentSlide = (currentSlide + 1) % slides.length;
+      slides[currentSlide].classList.add('active');
+    }, 5000);
+  }
 });
 </script>
 </body>
