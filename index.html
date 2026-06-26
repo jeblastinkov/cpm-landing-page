@@ -51,9 +51,8 @@ section{padding:6rem 0;}
 /* ===== HEADER ===== */
 .topbar{position:sticky;top:0;z-index:200;background:var(--cream);border-bottom:1px solid rgba(0,0,0,0.04);}
 .topbar .wrap{display:flex;align-items:center;justify-content:space-between;padding-top:1rem;padding-bottom:1rem;}
-.brand{display:flex;align-items:center;gap:11px;}
-.brand .stars{width:30px;height:30px;color:var(--coral);}
-.brand .name{font-size:1.5rem;font-weight:400;letter-spacing:0.06em;color:var(--ink);}
+.brand{display:flex;align-items:center;}
+.brand img{height:24px;width:auto;}
 .top-actions{display:flex;align-items:center;gap:1.5rem;}
 .top-phone{display:inline-flex;align-items:center;gap:8px;font-size:0.95rem;color:var(--ink);}
 .top-phone svg{width:17px;height:17px;color:var(--coral);}
@@ -219,8 +218,7 @@ footer{background:var(--taupe);color:#F2EAE0;padding:4.5rem 0 2.5rem;}
 <header class="topbar">
   <div class="wrap">
     <a class="brand" href="#">
-      <svg class="stars" viewBox="0 0 32 32" fill="currentColor"><path d="M16 0c1.2 6.8 4 9.6 10.8 10.8C20 12 17.2 14.8 16 21.6 14.8 14.8 12 12 5.2 10.8 12 9.6 14.8 6.8 16 0z"/><path d="M16 10.4c.9 5 3 7.1 8 8-5 .9-7.1 3-8 8-.9-5-3-7.1-8-8 5-.9 7.1-3 8-8z" opacity="0.55"/></svg>
-      <span class="name">CPM</span>
+      <img src="assets/cpm_logotype.png" alt="CPM Logo">
     </a>
     <div class="top-actions">
       <a class="top-phone" href="tel:+421902938810">
