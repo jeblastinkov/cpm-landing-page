@@ -19,6 +19,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CPM — Spoločne hľadáme príčiny, nie len príznaky</title>
 <link rel="icon" href="assets/cpm_logotype.png" type="image/png">
+<script>
+if (location.protocol === 'file:' || location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
+  document.documentElement.classList.add('booking-local-env');
+}
+</script>
 <link rel="preconnect" href="https://outlook.office.com">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -230,11 +235,21 @@ section{padding:6rem 0;}
 
 /* ===== BOOKING ===== */
 .book-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:1.8rem;align-items:stretch;margin-top:2.4rem;}
-.booking-box{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);min-height:400px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:2.5rem 2rem;gap:1.2rem;}
-.booking-box svg{width:48px;height:48px;color:var(--coral);flex-shrink:0;}
-.booking-box h3{font-size:1.25rem;font-weight:400;color:var(--ink);}
-.booking-box p{font-size:1rem;color:var(--ink-soft);max-width:36ch;line-height:1.5;}
-.booking-box .btn-book{width:100%;max-width:320px;}
+.booking-box{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);min-height:400px;display:flex;flex-direction:column;overflow:hidden;}
+.booking-iframe-wrap{flex:1;min-height:520px;background:#fff;}
+.booking-iframe-wrap iframe{display:block;width:100%;height:100%;min-height:520px;border:0;}
+.booking-local-panel{display:none;flex:1;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:2.5rem 2rem;gap:1.2rem;}
+.booking-local-panel svg{width:48px;height:48px;color:var(--coral);}
+.booking-local-panel h3{font-size:1.25rem;font-weight:400;color:var(--ink);}
+.booking-local-panel p{font-size:1rem;color:var(--ink-soft);max-width:36ch;line-height:1.5;}
+.booking-local-panel .btn-book{width:100%;max-width:320px;}
+.booking-fallback{margin:0;padding:0.65rem 1rem;text-align:center;font-size:0.82rem;color:var(--ink-soft);border-top:1px solid var(--line);background:var(--cream-2);}
+.booking-fallback a{color:var(--coral-deep);text-decoration:underline;text-underline-offset:2px;}
+.booking-fallback a:hover{color:var(--coral);}
+.booking-box.booking-local .booking-iframe-wrap{display:none;}
+.booking-box.booking-local .booking-local-panel{display:flex;}
+html.booking-local-env .booking-iframe-wrap{display:none;}
+html.booking-local-env .booking-local-panel{display:flex;}
 .call-card{background:var(--terracotta);color:var(--on-dark);border-radius:var(--radius);padding:2.4rem;display:flex;flex-direction:column;justify-content:center;}
 .call-card .eyebrow{color:#ffd9c6;}
 .call-card .phone{font-size:1.7rem;font-weight:400;color:#fff;margin:0.7rem 0;display:inline-flex;align-items:center;gap:10px;}
@@ -304,7 +319,8 @@ footer{background:var(--taupe);color:#F2EAE0;padding:4.5rem 0 2.5rem;}
   }
   #cc-main .cm__btns{width:100%; flex-wrap:wrap;}
   #cc-main .pm{margin:1rem;}
-  .booking-box{padding:2rem 1.5rem;min-height:320px;}
+  .booking-iframe-wrap,.booking-iframe-wrap iframe{min-height:460px;}
+  .booking-local-panel{padding:2rem 1.5rem;}
 }
 </style>
 </head>
@@ -495,11 +511,23 @@ footer{background:var(--taupe);color:#F2EAE0;padding:4.5rem 0 2.5rem;}
     <p class="sec-lead" style="max-width:60ch;margin:1rem auto 0">Vyberte si termín úvodného rozhovoru. Ten vedie Zuzana — priateľsky a nezáväzne.</p>
   </div>
   <div class="wrap book-grid">
-    <div class="booking-box">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
-      <h3>Kalendár Zuzany</h3>
-      <p>Vyberte si termín úvodného rozhovoru online. Otvorí sa bezpečná rezervačná stránka Microsoft Bookings.</p>
-      <a href="https://outlook.office.com/book/CPM_Rezervacie@cpm.online/?ismsaljsauthenabled" class="btn btn-coral btn-book" target="_blank" rel="noopener noreferrer">Vybrať termín online</a>
+    <div class="booking-box" data-bookings-url="https://outlook.office.com/book/CPM_Rezervacie@cpm.online/?ismsaljsauthenabled">
+      <div class="booking-iframe-wrap">
+        <iframe
+          src="https://outlook.office.com/book/CPM_Rezervacie@cpm.online/?ismsaljsauthenabled"
+          title="Rezervácia termínu — Microsoft Bookings"
+          loading="lazy"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allow="fullscreen">
+        </iframe>
+      </div>
+      <div class="booking-local-panel">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+        <h3>Kalendár Zuzany</h3>
+        <p>Na lokálnom náhľade sa kalendár nezobrazí kvôli bezpečnostným pravidlám Microsoftu. Na live stránke je vložený priamo v stránke.</p>
+        <a href="https://outlook.office.com/book/CPM_Rezervacie@cpm.online/?ismsaljsauthenabled" class="btn btn-coral btn-book" target="_blank" rel="noopener noreferrer" data-bookings-link>Vybrať termín online</a>
+      </div>
+      <p class="booking-fallback">Kalendár sa nezobrazuje? <a href="https://outlook.office.com/book/CPM_Rezervacie@cpm.online/?ismsaljsauthenabled" target="_blank" rel="noopener noreferrer" data-bookings-link>Otvoriť rezerváciu v novom okne</a></p>
     </div>
     <div class="call-card">
       <span class="eyebrow">Uprednostňujete telefonát?</span>
@@ -593,6 +621,19 @@ document.addEventListener('DOMContentLoaded', function() {
       currentSlide = (currentSlide + 1) % slides.length;
       slides[currentSlide].classList.add('active');
     }, 5000);
+  }
+
+  // MS Bookings: iframe works on Vercel, not on localhost/file://
+  var bookingBox = document.querySelector('.booking-box');
+  if (bookingBox) {
+    var bookingsUrl = bookingBox.dataset.bookingsUrl;
+    var isLocal = location.protocol === 'file:' || location.hostname === 'localhost' || location.hostname === '127.0.0.1';
+    if (isLocal) bookingBox.classList.add('booking-local');
+    if (bookingsUrl) {
+      bookingBox.querySelectorAll('[data-bookings-link]').forEach(function(link) {
+        link.href = bookingsUrl;
+      });
+    }
   }
 });
 </script>
