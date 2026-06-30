@@ -58,12 +58,12 @@ CookieConsent.run({
             },
             {
               title: 'Nevyhnutné cookies',
-              description: 'Potrebné na základné fungovanie stránky. Nie je možné ich vypnúť.',
+              description: 'Potrebné na základné fungovanie stránky vrátane rezervačného kalendára (Microsoft Bookings). Cookies pre rezerváciu nie sú blokované vaším súhlasom s analytikou — fungujú vždy, keď kalendár používate.',
               linkedCategory: 'necessary'
             },
             {
               title: 'Analytické cookies',
-              description: 'Pomáhajú nám pochopiť, ako návštevníci používajú stránku, aby sme ju mohli neustále vylepšovať. Všetky údaje sú anonymizované.',
+              description: 'Pomáhajú nám pochopiť, ako návštevníci používajú stránku. Nevzťahujú sa na rezervačný kalendár Microsoft Bookings — ten funguje nezávisle od tohto súhlasu.',
               linkedCategory: 'analytics',
               cookieTable: {
                 headers: {
